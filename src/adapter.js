@@ -104,6 +104,9 @@ function formatFailedStep (step) {
     }
   }
 
+  console.log('formatFailedStep')
+  console.log(JSON.stringify(relevantStack, undefined, 4))
+
   // Example output:
   // --------------------
   // Chrome 40.0.2214 (Mac OS X 10.9.5) xxx should return false 1 FAILED
@@ -164,6 +167,8 @@ function KarmaReporter (tc, jasmineEnv) {
   var startTimeCurrentSpec = new _Date().getTime()
 
   function handleGlobalErrors (result) {
+    console.log('handleGlobalErrors');
+    console.log(JSON.stringify(result, undefined, 4));
     if (result.failedExpectations && result.failedExpectations.length) {
       var message = 'An error was thrown in afterAll'
       var steps = result.failedExpectations
