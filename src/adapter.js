@@ -161,7 +161,7 @@ function getAllSpecNames (topSuite) {
 function KarmaReporter (tc, jasmineEnv) {
   var currentSuite = new SuiteNode()
 
-  console.log('***** KarmaReporter *****');
+  tc.info('***** KarmaReporter *****');
 
 
   // Save link on native Date object
@@ -170,8 +170,8 @@ function KarmaReporter (tc, jasmineEnv) {
   var startTimeCurrentSpec = new _Date().getTime()
 
   function handleGlobalErrors (result) {
-    console.log('***** handleGlobalErrors *****');
-    console.log(JSON.stringify(result, undefined, 4));
+    tc.info('***** handleGlobalErrors *****');
+    tc.info(JSON.stringify(result, undefined, 4));
     if (result.failedExpectations && result.failedExpectations.length) {
       var message = 'An error was thrown in afterAll'
       var steps = result.failedExpectations
@@ -196,7 +196,7 @@ function KarmaReporter (tc, jasmineEnv) {
 
   this.jasmineStarted = function (data) {
 
-    console.log('***** KarmaReporter.jasmineStarted *****');
+    tc.info('***** KarmaReporter.jasmineStarted *****');
 
     // TODO(vojta): Do not send spec names when polling.
     tc.info({
@@ -207,7 +207,7 @@ function KarmaReporter (tc, jasmineEnv) {
 
   this.jasmineDone = function (result) {
 
-    console.log('***** KarmaReporter.jasmineDone *****');
+    tc.info('***** KarmaReporter.jasmineDone *****');
     
     result = result || {}
 
